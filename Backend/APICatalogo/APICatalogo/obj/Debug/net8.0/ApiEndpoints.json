@@ -21,6 +21,22 @@
   },
   {
     "ContainingType": "APICatalogo.Controllers.CategoriasController",
+    "Method": "Post",
+    "RelativePath": "api/Categorias",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoria",
+        "Type": "APICatalogo.Models.Categoria",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APICatalogo.Controllers.CategoriasController",
     "Method": "GetCategoriaById",
     "RelativePath": "api/Categorias/{id}",
     "HttpMethod": "GET",

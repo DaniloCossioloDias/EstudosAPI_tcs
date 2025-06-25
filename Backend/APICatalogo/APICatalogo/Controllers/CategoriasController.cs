@@ -22,9 +22,8 @@ public class CategoriasController : ControllerBase
     {
         var categorias = _context.Categorias.ToList();
         if(categorias is null )
-        {
             return NotFound();
-        }
+
         return categorias;
     }
 
@@ -33,9 +32,7 @@ public class CategoriasController : ControllerBase
     {
         var categorias = _context.Categorias.Include(p => p.Produtos).ToList();
         if(categorias is null )
-        {
             return NotFound();
-        }
 
         return categorias;
     }
@@ -45,11 +42,20 @@ public class CategoriasController : ControllerBase
     {
         var categoria = _context.Categorias.FirstOrDefault(c => c.CategoriaId == id);
         if(categoria == null)
-        {
             return NotFound();
-        }
+
         return categoria;
     }
 
+    [HttpPost]
+    public ActionResult Post(Categoria categoria)
+    {
+        if(categoria is null)
+            return NotFound();
 
+        _context.Categorias.Add(categoria);
+        _context.SaveChanges();
+
+        return new CreatedAtRouteResult("ObterCategoria", new { id = categoria.CategoriaId }, categoria);
+    }
 }
