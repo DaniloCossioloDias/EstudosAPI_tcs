@@ -39,4 +39,17 @@ public class CategoriasController : ControllerBase
 
         return categorias;
     }
+
+    [HttpGet("{id:int}", Name = "ObterCategoria")]
+    public ActionResult<Categoria> GetCategoriaById(int id)
+    {
+        var categoria = _context.Categorias.FirstOrDefault(c => c.CategoriaId == id);
+        if(categoria == null)
+        {
+            return NotFound();
+        }
+        return categoria;
+    }
+
+
 }
